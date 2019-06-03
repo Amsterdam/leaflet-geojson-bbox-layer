@@ -1,3 +1,18 @@
 .map {
     height: 800px;
 }
+
+.divIcon {
+    width: 5px;
+    height: 5px;
+    background-color: gray;
+}
+.divIcon.green {
+    background-color: green;
+}
+.divIcon.yellow {
+    background-color: yellow;
+}
+.divIcon.red {
+    background-color: red;
+}
