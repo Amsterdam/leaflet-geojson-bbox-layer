@@ -53,7 +53,7 @@ const geojsonLayerOptions = {
         layer.on({
             click: (e) => {
                 const _layer = e.target;
-                console.log(_layer.feature.properties)
+                console.log('clicked: ', _layer.feature.properties) // eslint-disable-line no-console
             }
         });
     }

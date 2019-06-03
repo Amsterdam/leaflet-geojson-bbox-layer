@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "build": "webpack -p",
-    "test": "npm run lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "esw webpack.config.* src --color",
     "lint:watch": "npm run lint -- --watch"
   },
@@ -24,6 +25,7 @@
     "eslint": "5.10.0",
     "eslint-watch": "4.0.2",
     "file-loader": "3.0.1",
+    "jest": "24.8.0",
     "style-loader": "0.23.1",
     "webpack": "4.27.1",
     "webpack-cli": "3.1.2",

@@ -22,17 +22,17 @@ const GeojsonBboxLayer = L.GeoJSON.extend({
     onAdd(map) {
         this._map = map;
 
-        map.on('moveend', this.onMoveEnd, this);
-        map.on('zoomend', this.onZoomEnd, this);
-        map.on('refresh', this.onRefresh, this);
+        map.on('moveend', this._onMoveEnd, this);
+        map.on('zoomend', this._onZoomEnd, this);
+        map.on('refresh', this._onRefresh, this);
 
-        this.fetchNewData();
+        this._fetchNewData();
     },
 
     onRemove(map) {
-        map.off('moveend', this.onMoveEnd, this);
-        map.off('zoomend', this.onZoomEnd, this);
-        map.off('refresh', this.onRefresh, this);
+        map.off('moveend', this._onMoveEnd, this);
+        map.off('zoomend', this._onZoomEnd, this);
+        map.off('refresh', this._onRefresh, this);
 
         // Remove any geometry on this layer
         L.LayerGroup.prototype.onRemove.call(this, map);
@@ -43,13 +43,13 @@ const GeojsonBboxLayer = L.GeoJSON.extend({
     //
     // Custom methods
     //
-    zoomInRange() {
+    _zoomInRange() {
         const zoom = this._map.getZoom();
         return zoom >= this.options.zoomMin && zoom <= this.options.zoomMax;
     },
 
-    fetchNewData() {
-        if (!this.zoomInRange()) {
+    _fetchNewData() {
+        if (!this._zoomInRange()) {
             // Outside zoom range, not fetching new data
             return;
         }
@@ -72,19 +72,19 @@ const GeojsonBboxLayer = L.GeoJSON.extend({
             });
     },
 
-    onMoveEnd() {
+    _onMoveEnd() {
         // Fired after dragging AND zooming!
-        this.fetchNewData();
+        this._fetchNewData();
     },
 
-    onZoomEnd() {
-        if (!this.zoomInRange()) {
+    _onZoomEnd() {
+        if (!this._zoomInRange()) {
             this.clearLayers(); // Remove previous geometry, new data is fetched by onMoveEnd
         }
     },
 
-    onRefresh() {
-        this.fetchNewData();
+    _onRefresh() {
+        this._fetchNewData();
     },
 });
 
