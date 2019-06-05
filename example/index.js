@@ -2,7 +2,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import './main.css';
-import vanillaLayerPromise from './vanillaLayer';
+import { getLayer as getVanillaLayer } from './vanillaLayer';
 import pointsLayer from './pointsLayer';
 import polygonLayer from './polygonLayer';
 
@@ -53,13 +53,21 @@ layerCheckboxes.forEach(checkbox => checkbox.addEventListener('change', () => {
 }));
 
 
-vanillaLayerPromise.then(vanillaLayer => {
-    const checkbox = document.querySelector('input[value="vanilla"]');
-    checkbox.disabled = false;
-    checkbox.closest('.control').classList.remove('disabled');
-    layersConfig['vanilla'] = {
-        layer: vanillaLayer,
-        isVisible: false
-    };
-    updateMapLayers();
+const button = document.querySelector('.fetch-vanilla');
+button.addEventListener('click', () => {
+    button.disabled = true;
+    button.innerHTML = 'fetching';
+    getVanillaLayer().then(vanillaLayer => {
+        button.hidden = true;
+        const checkbox = document.querySelector('input[value="vanilla"]');
+        checkbox.disabled = false;
+        checkbox.closest('.control').classList.remove('disabled');
+        layersConfig['vanilla'] = {
+            layer: vanillaLayer,
+            isVisible: false
+        };
+        updateMapLayers();
+    });
+
 });
+

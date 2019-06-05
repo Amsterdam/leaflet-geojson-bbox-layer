@@ -10,8 +10,8 @@ module.exports = {
         contentBase: projectDir + '/example/', // Where to serve static files from (e.g.: index.html)
     },
     output: {
-        path: projectDir + '/dist',
-        publicPath: '/dist/',
+        path: projectDir + '/dist/example/',
+        publicPath: '/',
         filename: 'bundle.js'
     },
     module: {

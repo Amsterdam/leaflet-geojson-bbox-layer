@@ -7,12 +7,10 @@ const url = 'https://map.data.amsterdam.nl/maps/meetbouten?Typename=meetbouten_s
 
 const greenIcon = L.divIcon({html: '<div class="square"></div>', iconSize: [16, 16], className: 'divIcon gray'});
 
-const layer = fetchJson(url).then(data => {
+export const getLayer = () => fetchJson(url).then(data => {
    return L.geoJSON(data, {
        pointToLayer(feature, latlng) {
            return L.marker(latlng, {icon: greenIcon});
        },
    });
 });
-
-export default layer;

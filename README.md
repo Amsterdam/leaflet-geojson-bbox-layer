@@ -1,6 +1,6 @@
 # Leaflet Geojson bbox layer
 
-Leaflet layer for drawing geojson data based current view bounding box.
+Leaflet layer for drawing GeoJSON data based current view bounding box.
 This allows for easy interactive elements (e.g. click handlers) even with (very) large feature sets.
 
 Layer is an extension of Leaflet's own GeoJSON layer 
@@ -8,11 +8,11 @@ Layer is an extension of Leaflet's own GeoJSON layer
 
 This new layer will handle calling the user provided `fetchRequest` function with a bounding box.
 The string is of the form: `4.89,52.37,4.91,52.38` or `west,south,east,north`.
-This function should return a geojson object. 
+This function should return a GeoJSON object. 
 
 The main benefit of this layer is that only a subset of the data is displayed because the whole is to much of a performance hit.
 Therefor you'll probably want to limit showing the layer for when zoomed out.
-If you set a value `zoomMin` value on the geojson layer this value will both hide the layer and pause fetching new data. 
+If you set a value `zoomMin` value on the GeoJSON layer this value will both hide the layer and pause fetching new data. 
 
 # Usage
 
@@ -25,10 +25,10 @@ const fetchRequest = (bbox_str) => fetch(`${url}&bbox=${bbox_str}`).then(respons
 
 // Options specific to bbox geojson layer
 const bboxLayerOptions = {
-    fetchRequest, // function that returns geojson feature list for a given bounding box string
+    fetchRequest, // function that returns GeoJSON feature list for a given bounding box string
 };
 
-// Leaflet geojson layer options, see: https://leafletjs.com/reference-1.5.0.html#geojson-pointtolayer
+// Leaflet GeoJSON layer options, see: https://leafletjs.com/reference-1.5.0.html#geojson-pointtolayer
 const geojsonLayerOptions = {
     zoomMin: 16,
 
@@ -52,25 +52,34 @@ myLayer.addTo(map);
 
 # Development
 ## Install
-```
+```bash
 npm install
 ```
 
 ## Run
-```
+
+The example can be build with:
+
+```bash
 npm start
 ```
 
-Site available at http://localhost:8080
+Site available at http://localhost:8080.
+
+Library and example distributions are build using:
+
+```bash
+npm run build
+```
 
 ## Test
 
-```
+```bash
 npm test
 ```
 
 and
 
-```
+```bash
 npm run lint
 ```
