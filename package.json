@@ -12,7 +12,7 @@
     },
     "scripts": {
         "start": "webpack-dev-server --hot --inline",
-        "build": "webpack -p",
+        "build": "npm run build:example && npm run build:library",
         "build:example": "webpack -p && cp example/index.html dist/example/",
         "build:library": "webpack -p --config webpack.library.config.js",
         "test": "jest",

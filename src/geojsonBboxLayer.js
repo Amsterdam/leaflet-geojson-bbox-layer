@@ -1,4 +1,4 @@
-import L from 'leaflet';
+/* global L */
 
 const GeojsonBboxLayer = L.GeoJSON.extend({
     options: {

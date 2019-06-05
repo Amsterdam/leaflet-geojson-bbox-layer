@@ -1,0 +1,11 @@
+.idea
+*.tgz
+*.iml
+.eslintrc.json
+.editorconfig
+
+/example/
+/src/
+/dist/example/
+/node_modules/
+webpack.*.js

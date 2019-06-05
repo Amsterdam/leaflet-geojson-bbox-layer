@@ -12,11 +12,17 @@ module.exports = {
         path: projectDir + '/dist/library/',
         publicPath: '/dist/library/',
         filename: 'leaflet-geojson-bbox-layer.js',
-        library: 'leafletGeojsonBboxLayer',
-        // libraryTarget: 'umd'
+        libraryTarget: 'umd',
+        library: 'leafletGeojsonBboxLayer'
     },
-
-    externals: {
-        'leaflet': 'leaflet' // Don't include leaflet in library code
-    }
+    externals: ['leaflet'], // Don't include leaflet in library code
+    module: {
+        rules: [
+            {
+                test: /\.(js)$/,
+                exclude: /(node_modules|bower_components)/,
+                use: 'babel-loader'
+            }
+        ]
+    },
 };
