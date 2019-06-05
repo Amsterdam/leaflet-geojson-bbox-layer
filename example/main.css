@@ -1,0 +1,45 @@
+.map {
+    height: 800px;
+}
+
+.controls {
+    margin-bottom: 2em;
+}
+
+.control {
+    display: block;
+}
+.control.disabled {
+    color: gray;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(720deg);}
+}
+
+.divIcon {
+}
+
+.square {
+    width: 16px;
+    height: 16px;
+    border: solid 2px darkblue;
+}
+.divIcon.animate .square {
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in-out;
+}
+.divIcon.green .square {
+    background-color: green;
+}
+.divIcon.yellow .square {
+    background-color: yellow;
+}
+.divIcon.red .square {
+    background-color: red;
+}
+.divIcon.gray .square {
+    background-color: gray;
+}

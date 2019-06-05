@@ -1,14 +1,8 @@
-/**
- * Example webpack config
- */
 const projectDir = __dirname;
 
 module.exports = {
     mode: 'development',
-    entry: projectDir + '/example/index.js',
-    devServer: {
-        contentBase: projectDir + '/example/', // Where to serve static files from (e.g.: index.html)
-    },
+    entry: projectDir + '/src/index.js',
     output: {
         path: projectDir + '/dist',
         publicPath: '/dist/',
@@ -21,9 +15,9 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: 'babel-loader'
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: 'babel-loader'
             },
             {
                 test: /\.(png|jpe?g|gif)$/,

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Leaflet Geojson bbox layer example</title>
+</head>
+<body>
+    <h1>Leaflet Geojson bbox layer example</h1>
+
+    <p>
+        Example of using geojson bounding box leaflet layer to show point and polygon layers.
+        Bbox layers only work when zoomed in enough.
+        The point layer has example code how to respond to click events.
+    </p>
+    <p>
+        For comparison a vanilla leaflet geojson layer is provided.
+        This layer uses the same endpoint as the point layer but shows all features at the same time with the expected performance hit.
+    </p>
+
+    <div>Zoom level: <span class="zoom-level"></span></div>
+
+    <div class="controls">
+        <h2>Active layers</h2>
+        <label class="control disabled"><input class="layers-control" type="checkbox" name="layers" value="vanilla" disabled> Vanilla Geojson layer</label>
+        <label class="control"><input class="layers-control" type="checkbox" name="layers" value="bbox_points" checked> Bbox points layer (shown zoom >= 16)</label>
+        <label class="control"><input class="layers-control" type="checkbox" name="layers" value="bbox_polygons" checked> Bbox polygons layer (shown zoom >= 18)</label>
+    </div>
+
+    <div id="map" class="map"></div>
+
+    <script type="text/javascript" src="dist/bundle.js"></script>
+</body>
+</html>
