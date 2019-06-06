@@ -1,6 +1,8 @@
 # Leaflet Geojson bbox layer
 
-Leaflet layer for drawing GeoJSON data based current view bounding box.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c2e0da1e-9aa0-4fd3-a498-16a32dc981bc/deploy-status)](https://app.netlify.com/sites/leaflet-geojson-bbox-layer/deploys)
+
+Leaflet layer for drawing GeoJSON data based on the current view bounding box.
 This allows for easy interactive elements (e.g. click handlers) even with (very) large feature sets.
 
 Layer is an extension of Leaflet's own GeoJSON layer 
@@ -11,14 +13,16 @@ The string is of the form: `4.89,52.37,4.91,52.38` or `west,south,east,north`.
 This function should return a GeoJSON object. 
 
 The main benefit of this layer is that only a subset of the data is displayed because the whole is to much of a performance hit.
-Therefor you'll probably want to limit showing the layer for when zoomed out.
-If you set a value `zoomMin` value on the GeoJSON layer this value will both hide the layer and pause fetching new data. 
+At a certain zoom level however the current bounding box will encompass to many features.
+If you set a value `zoomMin` value on the GeoJSON layer this value will both hide the layer and pause fetching new data.
+
+See example: https://leaflet-geojson-bbox-layer.netlify.com/
 
 # Usage
 
 ```javascript
 import L from 'leaflet';
-import geojsonBboxLayer from '../src/geojsonBboxLayer.js';
+import geojsonBboxLayer from 'leaflet-geojson-bbox-layer';
 
 const url = 'https://map.data.amsterdam.nl/maps/meetbouten?Typename=meetbouten_status&REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326';
 const fetchRequest = (bbox_str) => fetch(`${url}&bbox=${bbox_str}`).then(response => response.json());
