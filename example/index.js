@@ -5,6 +5,7 @@ import './main.css';
 import { getLayer as getVanillaLayer } from './vanillaLayer';
 import pointsLayer from './pointsLayer';
 import polygonLayer from './polygonLayer';
+import polySelectionLayer from './polySelectionLayer';
 
 const zoomLevelEl = document.querySelector('.zoom-level');
 const map = L.map('map');
@@ -31,8 +32,12 @@ const layersConfig = {
     },
     'bbox_polygons': {
         layer: polygonLayer,
-        isVisible: true
+        isVisible: false
     },
+    'bbox_select': {
+        layer: polySelectionLayer,
+        isVisible: true
+    }
 };
 
 const updateMapLayers = () => {
@@ -68,6 +73,5 @@ button.addEventListener('click', () => {
         };
         updateMapLayers();
     });
-
 });
 

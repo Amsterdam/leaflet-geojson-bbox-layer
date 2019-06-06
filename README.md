@@ -9,7 +9,7 @@ Layer is an extension of Leaflet's own GeoJSON layer
 ([doc](https://leafletjs.com/reference-1.5.0.html#geojson) and [example](https://leafletjs.com/examples/geojson/)).
 
 This new layer will handle calling the user provided `fetchRequest` function with a bounding box.
-The string is of the form: `4.89,52.37,4.91,52.38` or `west,south,east,north`.
+The string is of the form: `4.89,52.37,4.91,52.38` or `west,south,east,north` in the WGS84 coordinate system (latitude, longitude).
 This function should return a GeoJSON object. 
 
 The main benefit of this layer is that only a subset of the data is displayed because the whole is to much of a performance hit.
@@ -55,6 +55,7 @@ myLayer.addTo(map);
 ```
 
 # Development
+
 ## Install
 ```bash
 npm install
@@ -70,7 +71,7 @@ npm start
 
 Site available at http://localhost:8080.
 
-Library and example distributions are build using:
+Build the library and example distribution using:
 
 ```bash
 npm run build
@@ -87,3 +88,17 @@ and
 ```bash
 npm run lint
 ```
+
+## Linking
+
+If you wish to make changes to this package and see the results directly in another package you can use `npm link` or `npm pack`.
+
+The `npm pack` workflow works as follows, for each change you want to test in the external project:
+
+* In this package:
+  * run: `npm build:library`
+  * and run: `npm pack`
+* In the project using this library:
+  * run `npm install <path_to_library>/leaflet-geojson-bbox-layer-<version>.tgz`
+  
+

@@ -23,8 +23,9 @@
     <div class="controls">
         <h2>Active layers</h2>
         <label class="control disabled"><input class="layers-control" type="checkbox" name="layers" value="vanilla" disabled> Vanilla Geojson layer <button class="fetch-vanilla">Fetch</button></label>
-        <label class="control"><input class="layers-control" type="checkbox" name="layers" value="bbox_points" checked> Bbox points layer (shown zoom >= 16)</label>
-        <label class="control"><input class="layers-control" type="checkbox" name="layers" value="bbox_polygons" checked> Bbox polygons layer (shown zoom >= 18)</label>
+        <label class="control"><input class="layers-control" type="checkbox" name="layers" value="bbox_points" checked> Basic bbox point layer (shown zoom >= 16)</label>
+        <label class="control"><input class="layers-control" type="checkbox" name="layers" value="bbox_polygons"> Basic bbox polygon layer (shown zoom >= 18)</label>
+        <label class="control"><input class="layers-control" type="checkbox" name="layers" value="bbox_select" checked> Selection bbox polygon layer (shown zoom >= 18)</label>
     </div>
 
     <div id="map" class="map"></div>
