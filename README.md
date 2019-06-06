@@ -106,7 +106,7 @@ The `npm pack` workflow works as follows, for each change you want to test in th
 
 After making changes:
 ```
-npm bump major/minor/patch
+npm version major/minor/patch
 ```
 
 To actually publish package you'll need to login:
