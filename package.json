@@ -1,5 +1,5 @@
 {
-    "name": "leaflet-geojson-bbox-layer",
+    "name": "@datapunt/leaflet-geojson-bbox-layer",
     "version": "0.1.0",
     "description": "Leaflet GeoJSON layer with bounding box feature retrieval",
     "license": "MPL-2.0",

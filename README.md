@@ -22,7 +22,7 @@ See example: https://leaflet-geojson-bbox-layer.netlify.com/
 
 ```javascript
 import L from 'leaflet';
-import geojsonBboxLayer from 'leaflet-geojson-bbox-layer';
+import geojsonBboxLayer from '@datapunt/leaflet-geojson-bbox-layer';
 
 const url = 'https://map.data.amsterdam.nl/maps/meetbouten?Typename=meetbouten_status&REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326';
 const fetchRequest = (bbox_str) => fetch(`${url}&bbox=${bbox_str}`).then(response => response.json());
@@ -102,3 +102,20 @@ The `npm pack` workflow works as follows, for each change you want to test in th
   * run `npm install <path_to_library>/leaflet-geojson-bbox-layer-<version>.tgz`
   
 
+## Publish
+
+After making changes:
+```
+npm bump major/minor/patch
+```
+
+To actually publish package you'll need to login:
+```
+npm login
+```
+User/pass is in Datapunt password vault. 
+
+Then publish the package
+```
+npm publish --access public
+```
