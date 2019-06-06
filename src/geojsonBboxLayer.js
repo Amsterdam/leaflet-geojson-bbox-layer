@@ -3,7 +3,13 @@
 const GeojsonBboxLayer = L.GeoJSON.extend({
     options: {
         zoomMin: 0,
-        zoomMax: 99
+        zoomMax: 99,
+
+        // Leaflet padding of bounds: https://leafletjs.com/reference-1.5.0.html#latlngbounds-pad
+        // Padding fetches and draws markers slightly off screen as well.
+        // This prevents large markers from popping if they are right on the edge:
+        //   The situation where the marker center is just off screen but the icon itself would be visible on screen.
+        bboxPadding: 0.03,
     }, // Default options
 
     //
@@ -58,7 +64,8 @@ const GeojsonBboxLayer = L.GeoJSON.extend({
         this.fire('loading');
 
         const bounds = this._map.getBounds();
-        this.options.fetchRequest(bounds.toBBoxString())
+        const padded = bounds.pad(this.options.bboxPadding);
+        this.options.fetchRequest(padded.toBBoxString())
             .then((geoData) => {
                 this.clearLayers(); // Remove previous geometry
                 this.addData(geoData);  // Adds geojson object to this layer

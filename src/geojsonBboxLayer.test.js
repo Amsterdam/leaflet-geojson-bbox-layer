@@ -1,3 +1,4 @@
+import L from 'leaflet'; // eslint-disable-line no-unused-vars
 import geojsonBboxLayer from './geojsonBboxLayer';
 
 describe('Leaflet geojson bbox layer', () => {
@@ -16,7 +17,9 @@ describe('Leaflet geojson bbox layer', () => {
       getZoom: jest.fn(),
     };
     map.getZoom.mockReturnValue(5);
-    map.getBounds.mockReturnValue({ toBBoxString: () => '1,2,3,4' });
+
+    const paddedBounds = { toBBoxString: () => '1,2,3,4' };
+    map.getBounds.mockReturnValue({ pad: () => paddedBounds});
 
     fetchRequest = jest.fn(() => Promise.resolve());
   });
